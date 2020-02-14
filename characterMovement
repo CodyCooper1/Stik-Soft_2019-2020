@@ -1,12 +1,14 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class characterMovement : MonoBehaviour {
+public class playerMovement : MonoBehaviour
+{
 
 
-    private float speed = 2f;
-    public bool jumpDistance;
+    public float speed = 2f;
+    public float jumpDistance;
     public bool Grounded = false;
     private Rigidbody2D Player;
 
@@ -20,14 +22,15 @@ public class characterMovement : MonoBehaviour {
     {
         Jump();
         Vector2 constSpeed = new Vector2(speed, 0);
-        transform.Translate(constSpeed, 0f, 0f);
+        transform.Translate(constSpeed);
     }
     void Jump()
     {
-    if(input.GetButtonDown("Jump/w/up") && Grounded == true){
-        Player.AddForce(new Vector 2 (0f, jumpDistance), ForceMode2D.Impulse;
+        if (Input.GetButtonDown("Vertical") && Grounded == true)
+        {
+            Player.GetComponent<Rigidbody2D>().velocity = Vector2.up * jumpDistance;
         }
     }
 
-   
+
 }
