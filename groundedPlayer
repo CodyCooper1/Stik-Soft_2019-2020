@@ -2,31 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class groundedPlayer : MonoBehaviour {
+public class groundedPlayer : MonoBehaviour
+{
 
     GameObject Player;
+    bool Grounded;
 
     // Use this for initialization
     void Start()
     {
-    Player = gameObject.transform.parent.gameObject
+        Player = gameObject.transform.parent.gameObject;
     }
 
     private void Update()
     {
-    
+
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-      if(collision.collider.tag == "Ground"){
-      Player.GetComponent<characterMovement>().Grounded = true;
-      }
+        if (collision.collider.tag == "Ground")
+        {
+           /* Player.GetComponent<playerMovement>().*/ Grounded = true;
+        }
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
-      if(collision.collider.tag == "Ground"){
-      Player.GetComponent<characterMovement>().Grounded = false;
-      }
+        if (collision.collider.tag == "Ground")
+        {
+            /*GetComponent*/Grounded = false;
+        }
     }
-   
+
 }
